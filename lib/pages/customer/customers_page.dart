@@ -34,7 +34,7 @@ class CustomersPage extends StatelessWidget {
                 itemCount: controller.customers.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    key: Key(controller.customers[index].id!),
+                    key: UniqueKey(),
                     onDismissed: (DismissDirection direction) async {
                       if (direction == DismissDirection.startToEnd || direction == DismissDirection.endToStart) {
                         await controller.deleteCustomer(controller.customers[index]);

@@ -1,16 +1,28 @@
-# sales_transaction_app
+# Sales App
 
-A new Flutter project.
+Sales App is an app which allows user to add customers, products and manage sales of their business.
 
-## Getting Started
+It uses GetX for state management, dependency management, route management and it uses some of the getx utils.
+It uses postgresql for database.
+It has following Pages
 
-This project is a starting point for a Flutter application.
+### CustomerPage
 
-A few resources to get you started if this is your first Flutter project:
+Here user can add/edit/view/delete customers
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+-> Tap on the Customer tile to update.
+-> Swipe Left/Right to delete the customer.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### ProductPage
+
+Here user can add/update/view/delete products
+
+-> Tap on the Product tile to update.
+-> Swipe Left/Right to delete the product.
+
+### SalesPage
+
+Here user can view sales of particular customer by selecting customer from the dropdown.
+User can add transaction.
+User can also delete transaction by swiping left or right.
+

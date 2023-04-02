@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sales_transaction_app/controller/customer_controller.dart';
 import 'package:sales_transaction_app/controller/product_controller.dart';
 import 'package:sales_transaction_app/core/utils/custom_snackbar.dart';
 import 'package:sales_transaction_app/models/product_model.dart';

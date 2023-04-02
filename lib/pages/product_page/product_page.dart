@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sales_transaction_app/controller/product_controller.dart';
 import 'package:sales_transaction_app/pages/common_widgets/core_dialog.dart';
-import 'package:sales_transaction_app/pages/customer/widgets/add_edit_cutomer_widget.dart';
 import 'package:sales_transaction_app/pages/product_page/widgets/add_edit_product_widget.dart';
 
-import '../../controller/customer_controller.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -36,7 +34,7 @@ class ProductPage extends StatelessWidget {
                 itemCount: controller.products.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    key: Key(controller.products[index].id!),
+                    key: UniqueKey(),
                     onDismissed: (DismissDirection direction) async {
                       if (direction == DismissDirection.startToEnd || direction == DismissDirection.endToStart) {
                         await controller.deleteProduct(controller.products[index]);

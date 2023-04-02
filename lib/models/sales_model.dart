@@ -35,14 +35,14 @@ class SalesModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'customer_id': id,
-      'customer_name': id,
-      'product_id': id,
-      'product_rate': id,
-      'product_name': id,
-      'quantity': id,
-      'created': id,
-      'updated': id,
+      'customer_id': customerId,
+      'customer_name': customerName,
+      'product_id': productId,
+      'product_rate': productRate,
+      'product_name': productName,
+      'quantity': quantity,
+      'created': created,
+      'updated': updated
     };
   }
 }

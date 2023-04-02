@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:sales_transaction_app/database/database_connection.dart';
 import 'package:sales_transaction_app/models/sales_model.dart';
@@ -5,8 +7,7 @@ import 'package:uuid/uuid.dart';
 
 abstract class SalesDataSource {
   Future<void> addSaleTransaction(SalesModel salesModel);
-  Future<List<SalesModel>> getSaleTransactionByCustomerId(
-      SalesModel salesModel);
+  Future<List<SalesModel>> getSaleTransactionByCustomerId(String customerId);
   Future<void> deleteTransaction(SalesModel salesModel);
 }
 
@@ -41,17 +42,23 @@ class SalesDataSourceImpl implements SalesDataSource {
 
   @override
   Future<List<SalesModel>> getSaleTransactionByCustomerId(
-      SalesModel salesModel) async {
+      String customerId) async {
     try {
       await database.connect();
-      final result = await database.db.query('''
+      final result = await database.db.query(
+        '''
         SELECT * from sales_transaction
         WHERE customer_id = @customer_id
-        ''', substitutionValues: {'customer_id': salesModel.customerId});
+        ''',
+        substitutionValues: {'customer_id': customerId},
+      );
+      log("customerId: $customerId");
+      log("Result: ${result.toList()}");
       final List<SalesModel> sm = result
           .map((e) => e.toColumnMap())
           .map((e) => SalesModel.fromMap(e))
           .toList();
+      log(sm.length.toString());
       return sm;
     } catch (e) {
       rethrow;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:sales_transaction_app/controller/product_controller.dart';
+import 'package:sales_transaction_app/controller/sales_controller.dart';
 import 'package:sales_transaction_app/pages/customer/customers_page.dart';
 import 'package:sales_transaction_app/pages/product_page/product_page.dart';
 import 'package:sales_transaction_app/pages/sales_page/sales_page.dart';
@@ -19,8 +20,14 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Get.find<CustomerControler>().getCustomer();
-    Get.find<ProductController>().getProducts();
+    init();
+   
+  }
+
+  init() async {
+    await Get.find<CustomerControler>().getCustomer();
+    await Get.find<ProductController>().getProducts();
+    Get.find<SalesController>();
   }
 
   List<Map<String, dynamic>> dItems = [
@@ -52,7 +59,7 @@ class _HomePageState extends State<HomePage> {
               } else if (index == 1) {
                 Get.to(() => const ProductPage());
               } else if (index == 2) {
-                Get.to(() => SalesPage());
+                Get.to(() => const SalesPage());
               }
             },
             child: Card(
